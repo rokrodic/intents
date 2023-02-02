@@ -2,4 +2,45 @@ language: sl
 intents:
   HassLightSet:
     data:
-      - sentences: []
+      - sentences:
+          - <spremeni | nastavi> <name> na <brightness> 
+          - <spremeni | nastavi> [moč | osvetlitev | jakost | svetlost] [luči | osvetlitve | osvetljave]
+            [v | na | nad | pod] <name> na <brightness> [procent | procenta | procente | procentov] [moči | svetlosti | jakosti | osvetlitve]
+        response: brightness
+
+      - sentences:
+          - <spremeni> [moč | jakost | intenziteto | osvetlitev] [luči | osvetlitve]
+            [v | na | nad | pod] <area> [na] <brightness> [procent | procenta | procente | procentov] [moči | svetlosti | jakosti | osvetlitve]
+        response: brightness_area
+
+      #brightness min/max
+      - sentences:
+          - "<spremeni> <name> na {brightness_level:brightness}"
+          - "<spremeni> [moč | osvetlitev | jakost | svetlost] [luči | osvetlitve] [v | na | nad | pod] <name> na {brightness_level:brightness} [procent | procenta | procente | procentov] [moči | svetlosti | jakosti | osvetlitve]"
+        slots:
+          brightness: 100
+        response: brightness
+
+      - sentences:
+          - "<spremeni> [moč | osvetlitev | jakost | svetlost] [luči | osvetlitve | osvetljave] [v | na | nad | pod] <area> [na] {brightness_level:brightness} [moči | svetlosti | jakosti | osvetlitve]"
+          - "<spremeni> <area> [moč | osvetlitev | jakost | svetlost] (luči | osvetlitve | osvetljave) [na] {brightness_level:brightness} [moči | svetlosti | jakosti | osvetlitve]"
+        slots:
+          brightness: 100
+        response: brightness_area
+
+      # color
+      - sentences:
+          - <spremeni> [barvo] <name> [na | v] {color}
+          - <spremeni> <name> [na | v] {color} [barvo | barva]
+        response: color
+
+      - sentences:
+          - <spremeni> [barvo] [luči | osvetlitve] [v | na | nad | pod] [prostoru | prostorom] <area>
+            [na | v] {color}
+          - <spremeni> [luč | luči | osvetlitev] [v | na | nad | pod] <area> [na | v]
+            {color} [barvo | barva]
+          - <spremeni> [v | na | nad | pod] <area> [luč | luči | osvetlitev] [na | v]
+            {color} [barvo | barva]
+          - [v | na | nad | pod] <area> <spremeni> [luč | luči | osvetlitev] [na | v]
+            {color} [barvo | barva]
+        response: color_area
