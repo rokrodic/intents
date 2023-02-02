@@ -2,7 +2,9 @@ language: sl
 intents:
   HassTurnOn:
     data:
-    - sentences: []
+    - sentences:
+        - "<vključi | vklopi> [luč | luči | osvetljavo] [v | na | nad | pod] <area>"
+        - "<vključi | vklopi> [vse | vso] [luči | osvetljavo] [v | na | nad | pod] <area>"
       slots:
         domain: light
-        name: all
+        response: "lights_area"
